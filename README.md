@@ -4,7 +4,7 @@
 
 ## Dedicated Map area in file
 
-After the tag ```__map__```  there is a data string represented as pairs of numbers representing the map from tile 0,0 to tile 127, 47
+After the tag ```__map__```  there is a data string represented as pairs of numbers representing the map from tile 0,0 to tile 127, 32
 
 the pair of numbers actually represents the offset of the drawn Tile in the sprite map, so 10 means 1 sprites in y (starts at 0) and 0 sprites in x (starts at 0)
 
