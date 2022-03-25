@@ -25,6 +25,10 @@ The second dual purpose section starts at sprite: Sprite 128 or Sprite 12,0. Thi
 
 the sprite area is fairly simple to decode, as all pixels are represented by a single digit hex number 0-f (0-15) which represent the pico8 color palet which is in file [pico8-pallete](scripts/pico8Colors.js) copied from [this](https://lospec.com/palette-list/pico-8) page.
 
+### Dual purpose GFX area
+
+
+
 ## Printing the map data on a canvas
 
 To achieve our map printing Programm we have to do the following steps:
