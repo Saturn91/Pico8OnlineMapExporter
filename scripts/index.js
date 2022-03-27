@@ -13,7 +13,7 @@ function processPico8RawData(data) {
 
     dualGFXPurposeStartIndex = spriteDataStartIndex + 128 * 32 * 2 + 64;
     const dualPurposeGFXData1 = data.substring(dualGFXPurposeStartIndex, dualGFXPurposeStartIndex + 128 * 32 + 32);
-    const dualPurposeGFXData2 = data.substring(dualGFXPurposeStartIndex + 128 * 32, dualGFXPurposeStartIndex + 128 * 32 + 128 * 32 + 32);
+    const dualPurposeGFXData2 = data.substring(dualGFXPurposeStartIndex + 128 * 32, dualGFXPurposeStartIndex + 128 * 32 + 128 * 32 + 64);
 
     drawSpriteDataToCanvas(singlePorpuseSpritesCtx, spriteData, displayScale);
     drawSpriteDataToCanvas(dualPorpuseSpritesCtx1,  dualPurposeGFXData1, displayScale);
