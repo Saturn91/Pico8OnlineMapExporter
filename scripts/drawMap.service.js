@@ -7,7 +7,7 @@ function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dua
             const spriteX = parseHex(lines[y][x*2+1]);
             if(spriteX || spriteY) mapCtx.drawImage(sprites.canvas, spriteX*8, spriteY*8, 8, 8, x*8, y*8, 8, 8);
             else {
-                mapCtx.fillStyle = PICO_8_COLOR_PALLETE[0];
+                mapCtx.fillStyle = backColor;
                 mapCtx.fillRect(x*8,y*8, 8, 8);
             }
         }
@@ -24,20 +24,20 @@ function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dua
                 if(yIsOdd) {
                     if(spriteX || spriteY) mapCtx.drawImage(sprites.canvas, spriteX*8, spriteY*8, 8, 8, x*8, 256+y/2*8, 8, 8);
                     else {
-                        mapCtx.fillStyle = PICO_8_COLOR_PALLETE[0];
+                        mapCtx.fillStyle = backColor;
                         mapCtx.fillRect(x*8,256+y/2*8, 8, 8);
                     }
                 } else {
                     if(spriteX || spriteY) mapCtx.drawImage(sprites.canvas, spriteX*8, spriteY*8, 8, 8, 512+x*8, 256+(y-1)/2*8, 8, 8);
                     else {
-                        mapCtx.fillStyle = PICO_8_COLOR_PALLETE[0];
+                        mapCtx.fillStyle = backColor;
                         mapCtx.fillRect(512+x*8,256+(y-1)/2*8, 8, 8);
                     }
                 }            
             }
         }
     } else {
-        mapCtx.fillStyle = PICO_8_COLOR_PALLETE[0];
+        mapCtx.fillStyle = backColor;
         mapCtx.fillRect(0,256, 32*4*8, 4*4*8);
     }
     
@@ -52,20 +52,20 @@ function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dua
                 if(!yIsOdd) {
                     if(spriteX || spriteY) mapCtx.drawImage(sprites.canvas, spriteX*8, spriteY*8, 8, 8, x*8, 380+y/2*8, 8, 8);
                     else {
-                        mapCtx.fillStyle = PICO_8_COLOR_PALLETE[0];
+                        mapCtx.fillStyle = backColor;
                         mapCtx.fillRect(x*8,380+y/2*8, 8, 8);
                     }
                 } else {
                     if(spriteX || spriteY) mapCtx.drawImage(sprites.canvas, spriteX*8, spriteY*8, 8, 8, 512+x*8, 256+120+y/2*8, 8, 8);
                     else {
-                        mapCtx.fillStyle = PICO_8_COLOR_PALLETE[0];
+                        mapCtx.fillStyle = backColor;
                         mapCtx.fillRect(512+x*8,256+120+y/2*8, 8, 8);
                     }
                 }            
             }
         }
     } else {
-        mapCtx.fillStyle = PICO_8_COLOR_PALLETE[0];
+        mapCtx.fillStyle = backColor;
         mapCtx.fillRect(0,380, 32*4*8, 4*4*8);
     }
 }

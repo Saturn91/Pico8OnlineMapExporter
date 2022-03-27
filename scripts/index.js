@@ -24,7 +24,23 @@ function processPico8RawData(data) {
     drawSpriteDataToCanvas(dualPorpuseSpritesCtx1,  dualPurposeGFXData1, displayScale);
     drawSpriteDataToCanvas(dualPorpuseSpritesCtx2,  dualPurposeGFXData2, displayScale);
     previewMapDataBtn.disabled = !spriteData;
-    
+}
+
+function fillBackgroundColorsSelect() {
+    colorSelect.innerHTML = "";
+    PICO_8_COLOR_PALLETE.forEach(col => {
+        const option = document.createElement("option");
+        option.value = col;
+        option.style.backgroundColor = col;
+        option.style.color = col;
+        colorSelect.appendChild(option);
+    });
+
+    updateColorSelectValue();
+}
+
+function updateColorSelectValue() {
+    colorSelect.style.backgroundColor = colorSelect.value;
 }
 
 const fileupload = document.getElementById('pico8-source-upload');
@@ -57,7 +73,7 @@ previewMapDataBtn.disabled = true;
 previewMapDataBtn.addEventListener('click', () => {
     selectedDualpurpose1 = checkBoxUseDualPurpose1.checked ? dualPurposeGFXData1 : undefined;
     selectedDualpurpose2 = checkBoxUseDualPurpose2.checked ? dualPurposeGFXData2 : undefined;
-    drawMap(canvasMapCtx, singlePorpuseSpritesCtx, singlePurposeMapData, selectedDualpurpose1, selectedDualpurpose2, 1);
+    drawMap(canvasMapCtx, singlePorpuseSpritesCtx, singlePurposeMapData, selectedDualpurpose1, selectedDualpurpose2, 1, colorSelect.value);
 });
 
 let selectedDualpurpose1 = undefined;
@@ -65,3 +81,9 @@ let selectedDualpurpose2 = undefined;
 
 const checkBoxUseDualPurpose1 = document.getElementById("use_dual_purpose1");
 const checkBoxUseDualPurpose2 = document.getElementById("use_dual_purpose2");
+
+const colorSelect = document.getElementById("colors");
+fillBackgroundColorsSelect();
+colorSelect.addEventListener('change', () => {
+    updateColorSelectValue();
+});

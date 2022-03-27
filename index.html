@@ -17,9 +17,9 @@
             <h1>Pico8 Map extractor</h1>
         </header>
         <main>
-            <div>
-                <div style="display: grid; columns: 2; grid-template-columns: 256px auto;">
-                    <input id="pico8-source-upload" type="file" onsubmit="submitFile" accept=".p8" />
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px;">
+                <div style="display: grid; columns: 2; grid-template-columns: 256px auto; column-gap: 8px;">
+                    <input id="pico8-source-upload" type="file" onsubmit="submitFile" accept=".p8" style="margin-bottom: 8px;" />
                     <input type="text" placeholder="myPico8map">
                     <canvas id="canvas-sprites-single-porpuse-preview" style="display: block"></canvas>  
                     <p>single purpose Sprite Data</p>
@@ -33,8 +33,14 @@
                         <label>2. dual sprite data section</label>
                         <input type="checkbox" checked="false" name="use as map Data" id="use_dual_purpose2">
                     </div>
+                    <div>
+                        <lavel>back ground color</lavel>
+                        <select id="colors">
+                        </select>
+                    </div>                   
+                    <button style="display: block; width: 100%" id="preview-map-data-btn">Preview Map</button>
                 </div>
-                <button style="display: block; width: 100%" id="preview-map-data-btn">Preview Map</button>
+                
             </div>
             
             <div style="overflow: hidden;">
