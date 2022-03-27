@@ -9,18 +9,21 @@
     <script type="text/javascript"  src="./scripts/pico8Colors.js"></script>
     <script type="text/javascript"  src="./scripts/parseSpriteData.service.js"></script>
     <script type="text/javascript"  src="./scripts/drawMap.service.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="styles/index.css">
 </head>
-<body style="display: flex; flex-direction: column; align-items: center;">
-    <div style="max-width: 1024px; width: 75vw;">
-
-        <header>
-            <h1>Pico8 Map extractor</h1>
+<body style="display: flex; flex-direction: column; align-items: center; background-color: #000000;">
+    <div style="max-width: 1024px; width: 75vw; background-color: #1D2B53; color: #C2C3C7; min-height: 100vh;">
+        <header style="background-color: #FF004D; color: #FFCCAA; padding: 8px;">
+            <h1 style="font-size: larger;">Pico8 Map extractor</h1>
         </header>
         <main>
-            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px;">
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; padding: 8px;">
                 <div style="display: grid; columns: 2; grid-template-columns: 256px auto; column-gap: 8px;">
-                    <input id="pico8-source-upload" type="file" onsubmit="submitFile" accept=".p8" style="margin-bottom: 8px;" />
-                    <input type="text" placeholder="myPico8map">
+                    <div></div>
+                    <input id="pico8-source-upload" type="file" onsubmit="submitFile" accept=".p8" class="file-input" />
                     <canvas id="canvas-sprites-single-porpuse-preview" style="display: block"></canvas>  
                     <p>single purpose Sprite Data</p>
                     <canvas id="canvas-dual-porpuse-preview1" style="display: block"></canvas>  
@@ -39,15 +42,13 @@
                         </select>
                     </div>                   
                     <button style="display: block; width: 100%" id="preview-map-data-btn">Preview Map</button>
-                </div>
-                
-            </div>
-            
-            <div style="overflow: hidden;">
+                </div>                
+            </div>            
+            <div style="overflow: hidden; display: flex; flex-direction: column; justify-content: center; background-color: #0e1b41;" class="preview-height">
                 <canvas id="canvas-map" style="display: block"></canvas>
             </div>
         </main>        
-        <footer>
+        <footer style="padding: 8px; background-color: #FF004D; color: #FFCCAA;">
             View Pico8 oficial website, made by Saturn91.dev
         </footer>
     </div>
