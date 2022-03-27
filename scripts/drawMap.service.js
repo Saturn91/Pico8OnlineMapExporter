@@ -1,15 +1,15 @@
 function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dualPurposeGFXData2, scale, backColor) {
     let lines = singlePurposeMapData.split(/\r?\n/);
     mapCtx.scale(scale,scale); 
+
+    mapCtx.fillStyle = mapCtx.fillStyle = backColor;
+    mapCtx.fillRect(0,0, 16*8*8, 4*16*8);
+
     for(let x = 0; x < lines[0].length/2; x++) {
         for(let y = 0; y < lines.length-1; y++) {
             const spriteY = parseHex(lines[y][x*2]);
             const spriteX = parseHex(lines[y][x*2+1]);
             if(spriteX || spriteY) mapCtx.drawImage(sprites.canvas, spriteX*8, spriteY*8, 8, 8, x*8, y*8, 8, 8);
-            else {
-                mapCtx.fillStyle = backColor;
-                mapCtx.fillRect(x*8,y*8, 8, 8);
-            }
         }
     }
 
@@ -29,16 +29,9 @@ function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dua
                     }
                 } else {
                     if(spriteX || spriteY) mapCtx.drawImage(sprites.canvas, spriteX*8, spriteY*8, 8, 8, 512+x*8, 256+(y-1)/2*8, 8, 8);
-                    else {
-                        mapCtx.fillStyle = backColor;
-                        mapCtx.fillRect(512+x*8,256+(y-1)/2*8, 8, 8);
-                    }
                 }            
             }
         }
-    } else {
-        mapCtx.fillStyle = backColor;
-        mapCtx.fillRect(0,256, 32*4*8, 4*4*8);
     }
     
     if(dualPurposeGFXData2) {
@@ -51,21 +44,10 @@ function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dua
                 const spriteY = parseHex(lines[y][x*2+1]);
                 if(!yIsOdd) {
                     if(spriteX || spriteY) mapCtx.drawImage(sprites.canvas, spriteX*8, spriteY*8, 8, 8, x*8, 380+y/2*8, 8, 8);
-                    else {
-                        mapCtx.fillStyle = backColor;
-                        mapCtx.fillRect(x*8,380+y/2*8, 8, 8);
-                    }
                 } else {
                     if(spriteX || spriteY) mapCtx.drawImage(sprites.canvas, spriteX*8, spriteY*8, 8, 8, 512+x*8, 256+120+y/2*8, 8, 8);
-                    else {
-                        mapCtx.fillStyle = backColor;
-                        mapCtx.fillRect(512+x*8,256+120+y/2*8, 8, 8);
-                    }
                 }            
             }
         }
-    } else {
-        mapCtx.fillStyle = backColor;
-        mapCtx.fillRect(0,380, 32*4*8, 17*8);
     }
 }
