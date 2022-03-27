@@ -1,4 +1,4 @@
-function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dualPurposeGFXData2, scale, backColor) {
+function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dualPurposeGFXData2, scale, backColor, drawScreenGrid) {
     let lines = singlePurposeMapData.split(/\r?\n/);
     mapCtx.scale(scale,scale); 
 
@@ -49,5 +49,21 @@ function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dua
                 }            
             }
         }
+    }
+
+    if(drawScreenGrid) {
+        mapCtx.lineWidth = "1";
+        mapCtx.strokeStyle = PICO_8_COLOR_PALLETE[6];
+        if(backColor == PICO_8_COLOR_PALLETE[6]) mapCtx.strokeStyle = PICO_8_COLOR_PALLETE[0];
+
+        for(let x = 0; x < 16; x++) {
+            for(let y = 0; y < 8; y++) {
+                mapCtx.beginPath();
+                mapCtx.rect(x*16*8, y*16*8, 16*8, 16*8);
+                mapCtx.stroke();
+            }
+        }
+
+        
     }
 }

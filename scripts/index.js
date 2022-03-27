@@ -73,7 +73,7 @@ previewMapDataBtn.disabled = true;
 previewMapDataBtn.addEventListener('click', () => {
     selectedDualpurpose1 = checkBoxUseDualPurpose1.checked ? dualPurposeGFXData1 : undefined;
     selectedDualpurpose2 = checkBoxUseDualPurpose2.checked ? dualPurposeGFXData2 : undefined;
-    drawMap(canvasMapCtx, singlePorpuseSpritesCtx, singlePurposeMapData, selectedDualpurpose1, selectedDualpurpose2, 1, colorSelect.value);
+    drawMap(canvasMapCtx, singlePorpuseSpritesCtx, singlePurposeMapData, selectedDualpurpose1, selectedDualpurpose2, 1, colorSelect.value, useScreenGrid.checked);
 });
 
 let selectedDualpurpose1 = undefined;
@@ -87,3 +87,5 @@ fillBackgroundColorsSelect();
 colorSelect.addEventListener('change', () => {
     updateColorSelectValue();
 });
+
+const useScreenGrid = document.getElementById("use-screen-grid");
