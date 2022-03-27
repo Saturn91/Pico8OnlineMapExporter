@@ -10,17 +10,42 @@
     <script type="text/javascript"  src="./scripts/parseSpriteData.service.js"></script>
     <script type="text/javascript"  src="./scripts/drawMap.service.js"></script>
 </head>
-<body>
-    <h1>Online Map Editor</h1>
-    <div>
-        <input id="pico8-source-upload" type="file" onsubmit="submitFile" accept=".p8" />
+<body style="display: flex; flex-direction: column; align-items: center;">
+    <div style="max-width: 1024px; width: 75vw;">
+
+        <header>
+            <h1>Pico8 Map extractor</h1>
+        </header>
+        <main>
+            <div>
+                <div style="display: grid; columns: 2; grid-template-columns: 256px auto;">
+                    <input id="pico8-source-upload" type="file" onsubmit="submitFile" accept=".p8" />
+                    <input type="text" placeholder="myPico8map">
+                    <canvas id="canvas-sprites-single-porpuse-preview" style="display: block"></canvas>  
+                    <p>single purpose Sprite Data</p>
+                    <canvas id="canvas-dual-porpuse-preview1" style="display: block"></canvas>  
+                    <div>
+                        <label>1. dual sprite data section</label>
+                        <input type="checkbox" checked="false" name="use as map Data" id="use_dual_purpose1">
+                    </div>
+                    <canvas id="canvas-dual-porpuse-preview2" style="display: block"></canvas>  
+                    <div>
+                        <label>2. dual sprite data section</label>
+                        <input type="checkbox" checked="false" name="use as map Data" id="use_dual_purpose2">
+                    </div>
+                </div>
+                <button style="display: block; width: 100%" id="preview-map-data-btn">Preview Map</button>
+            </div>
+            
+            <div style="overflow: hidden;">
+                <canvas id="canvas-map" style="display: block"></canvas>
+            </div>
+        </main>        
+        <footer>
+            View Pico8 oficial website, made by Saturn91.dev
+        </footer>
     </div>
-    <div style="width: 100%">
-        <canvas id="canvas-sprites-single-porpuse-preview" style="display: block"></canvas>  
-        <canvas id="canvas-dual-porpuse-preview1" style="display: block"></canvas>  
-        <canvas id="canvas-dual-porpuse-preview2" style="display: block"></canvas>  
-        <canvas id="canvas-map" style="display: block"></canvas>
-    </div>
+    
     
     <script src="./scripts/index.js"></script>
 </body>
