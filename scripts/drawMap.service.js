@@ -66,6 +66,6 @@ function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dua
         }
     } else {
         mapCtx.fillStyle = backColor;
-        mapCtx.fillRect(0,380, 32*4*8, 4*4*8);
+        mapCtx.fillRect(0,380, 32*4*8, 17*8);
     }
 }
