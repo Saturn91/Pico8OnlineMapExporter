@@ -1,6 +1,6 @@
 const sprites = undefined;
 
-function drawSpriteDataToCanvas(ctx, spriteData, scale) {
+function drawSpriteDataToCanvas(ctx, spriteData, scale, colorReplaceData) {
     const lines = spriteData.split(/\r?\n/);
     ctx.clearRect(0, 0, 16*8*8, 16*8*8);    
     ctx.scale(scale,scale);
@@ -8,7 +8,7 @@ function drawSpriteDataToCanvas(ctx, spriteData, scale) {
         for(let y = 0; y < lines.length; y++) {
             let picoColor = lines[y][x];
             if(picoColor != 0) {
-                ctx.fillStyle = PICO_8_COLOR_PALLETE[parseHex(picoColor)];
+                ctx.fillStyle = colorReplaceData[parseHex(picoColor)];
                 ctx.fillRect(x,y,1,1);
             }            
         }

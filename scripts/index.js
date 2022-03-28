@@ -9,6 +9,14 @@ let dualPurposeGFXData1 = undefined;
 let dualPurposeGFXData2 = undefined;
 let singlePurposeMapData = undefined;
 
+function redrawSprites() {
+    colorReplaceData = parsePalTextInput(colPalTextArea.value);
+    drawSpriteDataToCanvas(singlePorpuseSpritesCtx, spriteData, displayScale, colorReplaceData);
+    drawSpriteDataToCanvas(dualPorpuseSpritesCtx1,  dualPurposeGFXData1, displayScale, colorReplaceData);
+    drawSpriteDataToCanvas(dualPorpuseSpritesCtx2,  dualPurposeGFXData2, displayScale, colorReplaceData);
+    previewMapDataBtn.disabled = !spriteData;
+}
+
 function processPico8RawData(data) {
     mapDataStartIndex = data.indexOf("__map__") + 8;
     singlePurposeMapData = data.substring(mapDataStartIndex, mapDataStartIndex + 128 * 32 * 2 + 32);
@@ -20,15 +28,12 @@ function processPico8RawData(data) {
     dualPurposeGFXData1 = data.substring(dualGFXPurposeStartIndex, dualGFXPurposeStartIndex + 128 * 32 + 32);
     dualPurposeGFXData2 = data.substring(dualGFXPurposeStartIndex + 128 * 32, dualGFXPurposeStartIndex + 128 * 32 + 128 * 32 + 64);
 
-    drawSpriteDataToCanvas(singlePorpuseSpritesCtx, spriteData, displayScale);
-    drawSpriteDataToCanvas(dualPorpuseSpritesCtx1,  dualPurposeGFXData1, displayScale);
-    drawSpriteDataToCanvas(dualPorpuseSpritesCtx2,  dualPurposeGFXData2, displayScale);
-    previewMapDataBtn.disabled = !spriteData;
+    redrawSprites();    
 }
 
-function fillBackgroundColorsSelect() {
+function fillBackgroundColorsSelect(colors) {
     colorSelect.innerHTML = "";
-    PICO_8_COLOR_PALLETE.forEach(col => {
+    colors.forEach(col => {
         const option = document.createElement("option");
         option.value = col;
         option.style.backgroundColor = col;
@@ -83,9 +88,11 @@ const checkBoxUseDualPurpose1 = document.getElementById("use_dual_purpose1");
 const checkBoxUseDualPurpose2 = document.getElementById("use_dual_purpose2");
 
 const colorSelect = document.getElementById("colors");
-fillBackgroundColorsSelect();
+fillBackgroundColorsSelect(PICO_8_COLOR_PALLETE);
 colorSelect.addEventListener('change', () => {
     updateColorSelectValue();
 });
 
 const useScreenGrid = document.getElementById("use-screen-grid");
+
+const colPalTextArea = document.getElementById("col-pal-code");

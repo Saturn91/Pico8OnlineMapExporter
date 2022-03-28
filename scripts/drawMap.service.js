@@ -1,4 +1,5 @@
 function drawMap(mapCtx, sprites, singlePurposeMapData, dualPurposeGFXData1, dualPurposeGFXData2, scale, backColor, drawScreenGrid) {
+    redrawSprites();
     let lines = singlePurposeMapData.split(/\r?\n/);
     mapCtx.scale(scale,scale); 
 
