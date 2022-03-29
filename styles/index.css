@@ -37,6 +37,21 @@ button:hover {
 }
 
 .preview-height {
-    min-height: 512px;
-    height: calc(100vh - 350px);
+    height: 530px;
 }
+
+a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:active {
+    text-decoration: underline;
+  }

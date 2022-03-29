@@ -7,9 +7,21 @@ function initColors() {
 
 function parseOnePal(string) {
     const tagList = string.replace("(",",").replace(")",",").split(",");
-    const num1 = Number(tagList[1]);
-    const num2 = Number(tagList[2]) - 128;
-    colors[num1] = PICO_8_COLOR_2ND_PALLETE[num2];
+
+    const num1 = Number(tagList[1]);    
+    if(num1 < 0 || num1 > 15) {
+        alert("parameter1 in " + string + " must be [0-15] but is: " + num1);
+        return;
+    }
+
+    const num2 = Number(tagList[2]);
+    if(num2 < 128 || num2 > 143) {
+        alert("parameter2 in " + string + " must be [128-133] but is: " + num2);
+        return;
+    }
+
+    colors[num1] = PICO_8_COLOR_2ND_PALLETE[num2 - 128];
+    return true;
 }
 
 function parsePalTextInput(code) {
